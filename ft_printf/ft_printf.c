@@ -5,27 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/19 10:01:59 by fjimenez          #+#    #+#             */
-/*   Updated: 2020/07/06 15:52:22 by antomart         ###   ########.fr       */
+/*   Created: 2020/07/06 18:40:06 by antomart          #+#    #+#             */
+/*   Updated: 2020/07/06 20:01:45 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdarg.h>
 
-size_t ft_strlen(char *s)
+ssize_t ft_strlen(char *str)
 {
-	size_t i = 0;
-
-	while (s[i] != '\0')
+	size_t i;
+	i = 0;
+	while (str[i])
 		i++;
 	return (i);
 }
 
 int ft_numlen(long long n, int base_len)
 {
-	int i = 1;
-
+	int i;
+	i = 1;
 	while (n >= base_len || n <= -base_len)
 	{
 		n = n / base_len;
@@ -41,20 +41,36 @@ void ft_putnum(long long n, int base_len, char *base)
 	write(1, &base[n % base_len], 1);
 }
 
-int ft_printf(const char *format, ...)
+int ft_printf(char *format, ...)
 {
 	va_list args;
-	char *base, *s, *str;
-	long num;
-	int prec = 0, width = 0, ret = 0, nlen = 0, pads = 0, zeros = 0, dot = 0, neg = 0, base_len;
+	long int num;
+	char *str;
+	char *s;
+	char *base;
+	int width = 0;
+	int prec = 0;
+	int neg = 0;
+	int ret = 0;
+	int pads = 0;
+	int zero = 0;
+	int dot = 0;
+	int nlen = 0;
+	int base_len;
 	va_start(args, format);
-	str = (char*)format;
+	str = (char *)format;
 	while (*str != '\0')
 	{
 		if (*str == '%')
 		{
 			str++;
-			prec = 0, width = 0, nlen = 0, pads = 0, zeros = 0, dot = 0, neg = 0;
+			width = 0;
+			prec = 0;
+			neg = 0;
+			pads = 0;
+			zero = 0;
+			dot = 0;
+			nlen = 0;
 			while (*str >= '0' && *str <= '9')
 			{
 				width = width * 10 + (*str - '0');
@@ -91,28 +107,28 @@ int ft_printf(const char *format, ...)
 				base_len = 10;
 				if (num < 0)
 				{
-					num *= -1;
+					num = num * -1;
 					neg = 1;
 				}
 				nlen = ft_numlen(num, base_len) + neg;
 			}
 			if (dot == 1 && prec > nlen && *str != 's')
-				zeros = prec - nlen + neg;
+				zero = prec - nlen + neg;
 			else if (dot == 1 && prec < nlen && *str == 's')
 				nlen = prec;
-			else if (dot == 1 && prec == 0 && (*str == 's' || num == 0))
+			else if (dot == 1 && prec == 0 && (*str == 's' || num == '0'))
 				nlen = 0;
-			pads = width - nlen - zeros;
+			pads = width - nlen - zero;
 			while (pads-- > 0)
 			{
-				write(1, " ", 1);
+				write(1 ," ", 1);
 				ret++;
 			}
 			if (neg == 1)
 				write(1, "-", 1);
-			while (zeros-- > 0)
+			while (zero-- > 0)
 			{
-				write(1, "0", 1);
+				write(1 , "0", 1);
 				ret++;
 			}
 			if (*str == 's')
