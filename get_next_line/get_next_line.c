@@ -6,7 +6,7 @@
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 08:26:30 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/07 09:09:49 by antomart         ###   ########.fr       */
+/*   Updated: 2020/07/07 09:16:55 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ char *ft_substr(char *str, int start, int len)
 	while (i < len)
 	{
 		str1[i] = str[start + i];
+		i++;
 	}
 	str1[i] = '\0';
 	return (str1);
