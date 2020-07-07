@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/07 08:24:02 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/07 08:26:23 by antomart         ###   ########.fr       */
+/*   Created: 2020/07/07 15:16:39 by antomart          #+#    #+#             */
+/*   Updated: 2020/07/07 15:17:56 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define GET_NEXT_LINE_H
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 512
-
 #endif
 
 #include <unistd.h>

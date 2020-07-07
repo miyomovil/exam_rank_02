@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/07 08:26:30 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/07 09:16:55 by antomart         ###   ########.fr       */
+/*   Created: 2020/07/07 15:18:07 by antomart          #+#    #+#             */
+/*   Updated: 2020/07/07 15:42:03 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int ft_strchr(char *str, int c)
 	int len;
 	i = 0;
 	if (!str)
-		return (0);
+		return(0);
 	len = ft_strlen(str);
 	while (str[i] && str[i] != c)
 		i++;
@@ -40,17 +40,17 @@ char *ft_strdup(char *str)
 {
 	int i;
 	int len;
-	char *str1;
+	char *str2;
 	i = 0;
 	len = ft_strlen(str);
-	str1 = (char *)malloc(sizeof(char) * (len + 1));
+	str2 = (char *)malloc(sizeof(char) * (len + 1));
 	while (str[i])
 	{
-		str1[i] = str[i];
+		str2[i] = str[i];
 		i++;
 	}
-	str1[i] = '\0';
-	return(str1);
+	str2[i] = '\0';
+	return (str2);
 }
 
 char *ft_strjoin(char *str1, char *str2)
@@ -60,48 +60,46 @@ char *ft_strjoin(char *str1, char *str2)
 	int len1;
 	int len2;
 	char *str3;
-
 	i = 0;
 	j = 0;
 	len1 = ft_strlen(str1);
 	len2 = ft_strlen(str2);
-	str3 = (char *)malloc(sizeof(char)* (len1 + len2 + 1));
+	str3 = (char *)malloc(sizeof(char)* (len1 + len2 +1));
 	while (str1[i])
 	{
 		str3[i] = str1[i];
 		i++;
-	}	
-	while (str2[j])
+	}
+	while(str2[j])
 	{
 		str3[i + j] = str2[j];
 		j++;
 	}
 	str3[i + j] = '\0';
-	return (str3);
+	return(str3);
 }
 
 char *ft_substr(char *str, int start, int len)
 {
 	int i;
+	char *str2;
 	i = 0;
-	char *str1;
-	str1 = (char *)malloc(sizeof(char) * (len + 1));
+	str2 = (char *)malloc(sizeof(char) * (len + 1));
 	while (i < len)
 	{
-		str1[i] = str[start + i];
+		str2[i] = str[start + i];
 		i++;
 	}
-	str1[i] = '\0';
-	return (str1);
+	str2[i] = '\0';
+	return(str2);
 }
 
 int read_line(char **line, char **s)
 {
-	int len;
 	char *aux;
-	
+	int len;
 	len = 0;
-	while ((*s)[len] != '\0' && (*s)[len] != '\n')
+	while ((*s)[len] != '\n' && (*s)[len] != '\0')
 		len++;
 	if ((*s)[len] == '\n')
 	{
@@ -123,8 +121,8 @@ int read_line(char **line, char **s)
 int get_next_line(char **line)
 {
 	char *aux;
-	char buff[BUFFER_SIZE + 1];
 	int n_bytes;
+	char buff[BUFFER_SIZE + 1];
 	static char *s;
 
 	if (!line)
@@ -152,5 +150,5 @@ int get_next_line(char **line)
 		return (0);
 	}
 	else
-		return (read_line(line, &s));
+		return(read_line(line, &s));
 }

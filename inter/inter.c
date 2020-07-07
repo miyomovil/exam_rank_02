@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/07 08:12:54 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/07 08:18:17 by antomart         ###   ########.fr       */
+/*   Created: 2020/07/07 15:05:24 by antomart          #+#    #+#             */
+/*   Updated: 2020/07/07 15:13:20 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main (int argc, char **argv)
 				if (i == 1 && used[(unsigned char)argv[i][j]] == 1)
 				{
 					used[(unsigned char)argv[i][j]] = 2;
-					write(1, &argv[i][j], 1);
+					write(1 , &argv[i][j], 1);
 				}
 				j++;
 			}
