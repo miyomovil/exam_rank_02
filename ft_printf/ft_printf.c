@@ -6,7 +6,7 @@
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:13:46 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/07 17:33:40 by antomart         ###   ########.fr       */
+/*   Updated: 2020/07/07 17:40:34 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int ft_printf(char *format, ...)
 				write(1, "-", 1);
 			while (zero-- >0)
 			{
-				write(1, " ", 1);
+				write(1, "0", 1);
 				ret++;
 			}
 			if (*str == 's')
