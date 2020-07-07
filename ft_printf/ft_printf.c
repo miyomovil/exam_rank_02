@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/07 10:23:30 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/07 11:19:20 by antomart         ###   ########.fr       */
+/*   Created: 2020/07/07 17:13:46 by antomart          #+#    #+#             */
+/*   Updated: 2020/07/07 17:33:40 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 ssize_t ft_strlen(char *str)
 {
 	size_t i;
-
 	i = 0;
 	while (str[i] != '\0')
 		i++;
@@ -32,7 +31,7 @@ int ft_numlen(long long n, int base_len)
 		n = n / base_len;
 		i++;
 	}
-	return (i);
+	return(i);
 }
 
 void ft_putnum(long long n, int base_len, char *base)
@@ -46,21 +45,21 @@ int ft_printf(char *format, ...)
 {
 	va_list args;
 	char *str;
-	char *s;
 	char *base;
+	char *s;
 	long num;
 	int width = 0;
 	int prec = 0;
 	int nlen = 0;
 	int neg = 0;
 	int ret = 0;
+	int dot = 0;
 	int pad = 0;
 	int zero = 0;
-	int dot = 0;
 	int base_len;
 	va_start(args,format);
 	str = (char *)format;
-	while (*str != '\0')
+	while(*str != '\0')
 	{
 		if (*str == '%')
 		{
@@ -68,13 +67,13 @@ int ft_printf(char *format, ...)
 			width = 0;
 			prec = 0;
 			neg = 0;
-			nlen = 0;
 			pad = 0;
 			dot = 0;
 			zero = 0;
+			nlen = 0;
 			while (*str >= '0' && *str <= '9')
 			{
-				width = width * 10 +(*str - '0');
+				width = width * 10 + (*str - '0');
 				str++;
 			}
 			if (*str == '.')
@@ -89,7 +88,7 @@ int ft_printf(char *format, ...)
 			}
 			if (*str == 's')
 			{
-				s = va_arg(args, char *);
+				s = va_arg(args, char*);
 				if (!s)
 					s = "(null)";
 				nlen = ft_strlen(s);
@@ -106,7 +105,7 @@ int ft_printf(char *format, ...)
 				num = va_arg(args, int);
 				if (num < 0)
 				{
-					num = num * -1;
+					num = num  *-1;
 					neg = 1;
 				}
 				base = "0123456789";
@@ -119,21 +118,21 @@ int ft_printf(char *format, ...)
 				nlen = prec;
 			else if (dot == 1 && prec == 0 && (*str == 's' || num == 0))
 				nlen = 0;
-			pad = width - nlen - zero;
-			while (pad-- > 0)
+			pad = width -nlen -zero;
+			while (pad-- >0)
 			{
 				write(1, " ", 1);
 				ret++;
 			}
 			if (neg == 1)
-				write (1, "-", 1);
-			while (zero-- > 0)
+				write(1, "-", 1);
+			while (zero-- >0)
 			{
-				write(1, "0", 1);
+				write(1, " ", 1);
 				ret++;
 			}
 			if (*str == 's')
-				write (1, s, nlen);
+				write(1, s, nlen);
 			else if (nlen > 0)
 				ft_putnum(num, base_len, base);
 			ret += nlen;
@@ -145,6 +144,7 @@ int ft_printf(char *format, ...)
 			ret++;
 			str++;
 		}
+		
 	}
 	return(ret);
 }
