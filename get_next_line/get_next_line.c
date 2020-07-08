@@ -6,7 +6,7 @@
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 15:10:03 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/08 15:27:11 by antomart         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:31:04 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char *ft_strjoin(char *str1, char *str2)
 		str3[i] = str1[i];
 		i++;
 	}
-	while(str3[j])
+	while(str2[j])
 	{
 		str3[i + j] = str1[j];
 		j++;
