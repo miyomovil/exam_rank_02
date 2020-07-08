@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/07 15:05:19 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/07 15:16:27 by antomart         ###   ########.fr       */
+/*   Created: 2020/07/08 15:05:16 by antomart          #+#    #+#             */
+/*   Updated: 2020/07/08 15:08:37 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main (int argc, char **argv)
 		while (i < 3)
 		{
 			j = 0;
-			while (argv[i][j])
+			while(argv[i][j])
 			{
 				if (!used[(unsigned char)argv[i][j]])
 				{
