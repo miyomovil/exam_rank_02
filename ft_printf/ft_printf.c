@@ -6,7 +6,7 @@
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 18:17:00 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/09 18:32:33 by antomart         ###   ########.fr       */
+/*   Updated: 2020/07/09 18:34:31 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void ft_putnum(long long n, int base_len, char *base)
 {
 	if (n >= base_len)
 		ft_putnum(n / base_len, base_len, base);
-	write(1, base[n % base_len], base);
+	write(1, &base[n % base_len], 1);
 }
 
 int ft_printf(char *format, ...)
