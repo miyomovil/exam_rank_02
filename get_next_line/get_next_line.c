@@ -6,7 +6,7 @@
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 11:01:38 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/09 11:23:40 by antomart         ###   ########.fr       */
+/*   Updated: 2020/07/09 11:28:25 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int read_line(char **line, char **s)
 	char *aux;
 
 	len = 0;
-	while ((*s)[len] == '\0' && (*s)[len] == '\n')
+	while ((*s)[len] != '\0' && (*s)[len] != '\n')
 		len++;
 	if ((*s)[len]== '\n')
 	{
