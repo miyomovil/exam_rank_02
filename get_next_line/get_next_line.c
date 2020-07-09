@@ -6,7 +6,7 @@
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 11:01:38 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/09 11:28:25 by antomart         ###   ########.fr       */
+/*   Updated: 2020/07/09 11:29:41 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int read_line(char **line, char **s)
 	len = 0;
 	while ((*s)[len] != '\0' && (*s)[len] != '\n')
 		len++;
-	if ((*s)[len]== '\n')
+	if ((*s)[len] == '\n')
 	{
 		*line = ft_substr(*s, 0, len);
 		aux = ft_strdup(&(*s)[len + 1]);
@@ -131,7 +131,7 @@ int get_next_line(char **line)
 	while (ft_strchr(s, '\n') == 0)
 	{
 		n_bytes = read(0, buff, BUFFER_SIZE);
-		if (n_bytes > 0)
+		if (n_bytes < 0)
 			return (-1);
 		if (n_bytes == 0)
 			break;
