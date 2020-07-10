@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 18:17:00 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/09 18:34:31 by antomart         ###   ########.fr       */
+/*   Created: 2020/07/10 07:23:14 by antomart          #+#    #+#             */
+/*   Updated: 2020/07/10 07:42:17 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int ft_numlen(long long n, int base_len)
 	return (i);
 }
 
-void ft_putnum(long long n, int base_len, char *base)
+void ft_putnum(long long n, int base_len, char * base)
 {
 	if (n >= base_len)
 		ft_putnum(n / base_len, base_len, base);
@@ -44,42 +44,42 @@ void ft_putnum(long long n, int base_len, char *base)
 int ft_printf(char *format, ...)
 {
 	va_list args;
+	long int num;
+	char *str;
 	char *s;
 	char *base;
-	char *str;
-	long int num;
 	int width = 0;
 	int prec = 0;
-	int ret = 0;
 	int neg = 0;
-	int dot = 0;
+	int ret = 0;
 	int pad = 0;
+	int dot = 0;
 	int zero = 0;
 	int nlen = 0;
 	int base_len;
 	va_start(args,format);
-	str =(char *)format;
-	while(*str != '\0')
+	str = (char *)format;
+	while (*str != '\0')
 	{
-		if(*str == '%')
+		if (*str == '%')
 		{
 			str++;
 			width = 0;
 			prec = 0;
+			dot = 0;
+			zero = 0;
 			neg = 0;
 			nlen = 0;
-			zero = 0;
 			pad = 0;
-			dot = 0;
 			while (*str >= '0' && *str <= '9')
 			{
-				width = width * 10 +(*str - '0');
+				width = width *10 + (*str - '0');
 				str++;
 			}
 			if (*str == '.')
 			{
 				str++;
-				while (*str >= '0' && *str <= '9')
+				while(*str>= '0' && *str <= '9')
 				{
 					prec = prec * 10 + (*str - '0');
 					str++;
@@ -113,15 +113,15 @@ int ft_printf(char *format, ...)
 				nlen = ft_numlen(num, base_len) + neg;
 			}
 			if (dot == 1 && prec > nlen && *str != 's')
-				zero = prec - nlen + neg;
-			else if (dot == 1 && prec < nlen && *str == 's')
+				zero = prec -nlen +neg;
+			else if(dot == 1 && prec < nlen && *str == 's')
 				nlen = prec;
 			else if (dot == 1 && prec == 0 && (*str == 's' || num == 0))
 				nlen = 0;
-			pad = width -nlen -zero;
+			pad = width - nlen - zero;
 			while (pad-- > 0)
 			{
-				write(1, " ", 1);
+				write (1, " ", 1);
 				ret++;
 			}
 			if (neg == 1)
@@ -133,7 +133,7 @@ int ft_printf(char *format, ...)
 			}
 			if (*str == 's')
 				write(1, s, nlen);
-			else if(nlen > 0)
+			else if (nlen > 0)
 				ft_putnum(num, base_len, base);
 			ret += nlen;
 			str++;
@@ -141,8 +141,8 @@ int ft_printf(char *format, ...)
 		else
 		{
 			write(1, str, 1);
-			str++;
 			ret++;
+			str++;
 		}
 	}
 	return (ret);
