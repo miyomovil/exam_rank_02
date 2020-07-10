@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 17:36:22 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/09 17:58:43 by antomart         ###   ########.fr       */
+/*   Created: 2020/07/10 07:03:47 by antomart          #+#    #+#             */
+/*   Updated: 2020/07/10 07:19:48 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ unsigned int ft_strlen(char *str)
 int ft_strchr(char *str, int c)
 {
 	int i;
-	i = 0;
 	int len;
 	if (!str)
 		return (0);
+	i = 0;
 	len = ft_strlen(str);
 	while (str[i] && str[i] != c)
 		i++;
@@ -43,7 +43,7 @@ char *ft_strdup(char *str)
 	char *str1;
 	i = 0;
 	len = ft_strlen(str);
-	str1 = (char *)malloc(sizeof(char) * (len + 1));
+	str1 =(char *)malloc(sizeof(char)* (len + 1));
 	while (str[i])
 	{
 		str1[i] = str[i];
@@ -64,7 +64,7 @@ char *ft_strjoin(char *str1, char *str2)
 	j = 0;
 	len1 = ft_strlen(str1);
 	len2 = ft_strlen(str2);
-	str3 = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	str3 = (char *)malloc(sizeof(char)* (len1 + len2 + 1));
 	while (str1[i])
 	{
 		str3[i] = str1[i];
@@ -84,29 +84,29 @@ char *ft_substr(char *str, int start, int len)
 	int i;
 	char *str1;
 	i = 0;
-	str1 = (char *)malloc(sizeof(char) * (len + 1));
+	str1 = (char *)malloc(sizeof(char)* (len + 1));
 	while (i < len)
 	{
 		str1[i] = str[start + i];
 		i++;
 	}
 	str1[i] = '\0';
-	return (str1);
+	return(str1);
 }
 
 int read_line(char **line, char **s)
 {
-	int len;
 	char *aux;
+	int len;
 	len = 0;
 	while ((*s)[len] != '\0' && (*s)[len] != '\n')
 		len++;
 	if ((*s)[len] == '\n')
 	{
 		*line = ft_substr(*s, 0, len);
-		aux = ft_strdup(&(*s)[len + 1]);
+		aux = ft_strdup(&(*s)[len +1]);
 		free(*s);
-		*s = aux;
+		(*s) = aux;
 	}
 	else
 	{
@@ -121,11 +121,11 @@ int read_line(char **line, char **s)
 int get_next_line(char **line)
 {
 	char *aux;
+	int n_bytes;
 	static char *s;
 	char buff[BUFFER_SIZE + 1];
-	int n_bytes;
 
-	if(!line)
+	if (!line)
 		return (-1);
 	while (ft_strchr(s, '\n') == 0)
 	{
@@ -150,5 +150,5 @@ int get_next_line(char **line)
 		return (0);
 	}
 	else
-		return (read_line(line, &s));
+		return(read_line(line, &s));	
 }

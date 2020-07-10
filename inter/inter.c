@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antomart <antomart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 16:38:42 by antomart          #+#    #+#             */
-/*   Updated: 2020/07/09 16:42:04 by antomart         ###   ########.fr       */
+/*   Created: 2020/07/10 06:55:07 by antomart          #+#    #+#             */
+/*   Updated: 2020/07/10 06:58:58 by antomart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int main (int argc, char** argv)
+int main(int argc, char **argv)
 {
 	int i;
 	int j;
